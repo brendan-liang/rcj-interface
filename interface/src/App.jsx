@@ -1,6 +1,8 @@
 import './App.css'
 import { RobotList } from "./components/robots"
 import { CameraFeed } from "./components/camera"
+import { ControlTile } from "./components/control"
+import { Status } from "./components/status"
 import { useState } from 'react';
 import React from 'react';
 
@@ -20,6 +22,8 @@ function App() {
             }}>
                 <RobotList />
                 <CameraFeed />
+                <ControlTile />
+                <Status />
             </UserContext.Provider>
         </div>
     );

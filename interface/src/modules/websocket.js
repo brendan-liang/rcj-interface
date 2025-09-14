@@ -41,6 +41,11 @@ class RobotWebSocket {
         this.ws.close();
         return true;
     }
+
+    send(msg) {
+        const data = JSON.stringify(msg);
+        this.ws.send(data);
+    }
 }
 
 class RobotManager {

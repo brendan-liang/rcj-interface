@@ -1,6 +1,6 @@
 import { RobotManager } from "../modules/websocket"
 import { useEffect, useContext } from 'react';
-import { UserContext } from "../App"
+import { UserContext } from "../App.jsx"
 
 const robotManager = new RobotManager();
 
