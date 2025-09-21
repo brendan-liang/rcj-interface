@@ -73,9 +73,9 @@ if __name__ == "__main__":
     camera = cv2.VideoCapture(0)
 
     # Set camera resolution to lower values for better performance
-    camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-    camera.set(cv2.CAP_PROP_FPS, 30)
+    # camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    # camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    # camera.set(cv2.CAP_PROP_FPS, 30)
 
     while 1:
         cv2.waitKey(1)
@@ -84,4 +84,4 @@ if __name__ == "__main__":
         if ret:
             server.send_frame(frame)
         
-        # cv2.imshow("interface test", frame)
+        cv2.imshow("interface test", frame)

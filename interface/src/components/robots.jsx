@@ -11,7 +11,7 @@ function handleAddRobot(event) {
 }
 
 function RobotList() {
-    const {robots, setRobots} = useContext(UserContext);
+    const {robots, setRobots, selectedBot} = useContext(UserContext);
 
     useEffect(() => {
         const updateList = () => {
@@ -32,7 +32,7 @@ function RobotList() {
 
     return (
         <div className="RobotList tile">
-            <h2>Connected Robots</h2>
+            <h2>🤖 Connected Robots</h2>
             <ul>
                 {Object.keys(robots).map((robotKey) => (
                     <li key={robotKey}>Bot {robotKey} @ {robots[robotKey].url.slice(5)}</li>
@@ -40,9 +40,9 @@ function RobotList() {
             </ul>
             <div className="AddRobot">
                 <form>
-                    <span>Add Robot: </span>
-                    <input type="text" placeholder="Robot Name" name="robotName" autoComplete="off"/>
-                    <button type="submit" onClick={handleAddRobot}>Add Robot</button>
+                    <span>Add New Robot</span>
+                    <input type="text" placeholder="Enter robot IP address" name="robotName" autoComplete="off"/>
+                    <button type="submit" onClick={handleAddRobot}>Connect Robot</button>
                 </form>
             </div>
         </div>

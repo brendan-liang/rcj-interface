@@ -11,6 +11,7 @@ function CameraFeed() {
             if (!message) { return ;}
             const data = JSON.parse(message.data);
             if (data.message === "image") {
+                console.log(`Received image from bot ${id}`);
                 setLastImage(data.data);
             } else {
                 return;
@@ -19,18 +20,24 @@ function CameraFeed() {
 
         robotManager.on('robotMessage', updateImage);
 
-        updateImage()
+        updateImage();
 
         return () => {
             robotManager.off('robotMessage', updateImage);
         };
     }, []);
 
-    const imageElement = lastImage ? <img src={`data:image/jpeg;base64, ${lastImage}`} className="RobotImage"></img> : <span>No image</span>;
+    const imageElement = lastImage ? 
+        <div className="image-container">
+            <img src={`data:image/jpeg;base64, ${lastImage}`} className="RobotImage" alt="Robot camera feed" />
+        </div> : 
+        <div className="image-container">
+            <div className="no-image">No image available</div>
+        </div>;
 
     return (
         <div className="CameraFeed tile">
-            <h2>Camera Feed</h2>
+            <h2>📹 Camera Feed</h2>
             {imageElement}
         </div>
     );
