@@ -1,17 +1,13 @@
 import { useContext, useEffect } from "react"
 import { UserContext } from "../App.jsx"
 
-function handleNewSelect(e) {
-    console.log(e.target.value);
-}
-
 function SelectBot() {
-    const { robots, lastImage, setLastImage, selectedBot, setSelectedBot } = useContext(UserContext);
+    const { robots, setSelectedBot} = useContext(UserContext);
 
     return (
         <div className="SelectBot">
             <span>Select Active Robot</span>
-            <select id="robot-select" onChange={handleNewSelect}>
+            <select id="robot-select" onChange={(e) => {setSelectedBot(parseInt(e.target.value))}}>
                 <option value="">Choose a robot...</option>
                 {Object.keys(robots).map((robotKey) => (
                     <option key={robotKey} value={robotKey}>🤖 Bot {robotKey} @ {robots[robotKey].url.slice(5)}</option>
@@ -22,7 +18,7 @@ function SelectBot() {
 }
 
 function Status() {
-    const { robots, lastImage, setLastImage, selectedBot, setSelectedBot } = useContext(UserContext);
+    const { robots, selectedBot } = useContext(UserContext);
 
     return (
         <div className="Status tile">
